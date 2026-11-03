@@ -31,4 +31,4 @@ jobs:
 
       - name: Ejecutar script de R
         run: |
-          Rscript main.R
+          Rscript cod/main.R
