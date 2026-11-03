@@ -38,28 +38,3 @@ resumen.categorias <- datos.precipitacion %>%
     piso.min = min(prec.anual.min)
   )
 
-
-grafico.anomalias <- datos.precipitacion %>% 
-  ggplot(aes(x = anio, y = anomalia.pct, fill = categoria.anio)) +
-  geom_col(width = 0.65) +
-  geom_hline(yintercept = 0, color = "gray30", linewidth = 0.5) +
-  scale_x_continuous(breaks = seq(2001, 2024, by = 2)) +
-  scale_fill_manual(
-    values = c("Seco" = "#E06D53", "Normal" = "#BDC3C7", "Humedo" = "#2980B9"),
-    labels = c("Seco" = "Seco", "Normal" = "Normal", "Humedo" = "Húmedo")
-  ) +
-  labs(
-    title = "Anomalía porcentual de la precipitación anual (2001–2024)",
-    x = "Año",
-    y = "Anomalía (%)",
-    fill = NULL
-  ) +
-  theme_minimal(base_size = 12) +
-  theme(
-    legend.position = "top",
-    panel.grid.major.x = element_blank(),
-    panel.grid.minor = element_blank(),
-    plot.title = element_text(face = "bold", hjust = 0.5)
-  )
-
-grafico.anomalias
