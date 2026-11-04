@@ -6,7 +6,6 @@
 
 # Datos pesados o confidenciales
 data/confidencial/
-data/*.xlsx
 
 # Credenciales
 config/credenciales.yml
