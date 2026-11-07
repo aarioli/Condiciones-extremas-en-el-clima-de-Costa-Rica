@@ -1,0 +1,111 @@
+---
+title: "Fragmento: Introducción, análisis, discusión y conclusiones"
+lang: es
+format:
+  pdf:
+    fontsize: 12pt
+    geometry: margin=2.5cm
+---
+
+
+# Introducción
+
+Costa Rica se ha comprometido a descarbonizar su economía hacia mediados de siglo (Gobierno de Costa Rica, 2019), y su inventario nacional ubica al transporte como la principal fuente de gases de efecto invernadero (GEI), con el 41,55 % del total en 2017 (Programa de las Naciones Unidas para el Desarrollo [PNUD], 2022). A escala global, el calentamiento se asocia con la acumulación de estos gases en la atmósfera (Intergovernmental Panel on Climate Change [IPCC], 2021), por lo que es pertinente preguntarse si las emisiones y la temperatura nacionales muestran alguna relación en un mismo periodo.
+
+Además, el país está expuesto a una variabilidad climática interanual marcada por el fenómeno ENOS, que afecta de forma distinta la precipitación de las vertientes del Pacífico y del Caribe. Esa variabilidad interesa para la cobertura arbórea, cuya pérdida se monitorea por satélite (Hansen et al., 2013) y se clasifica según su causa dominante (Sims et al., 2025). Algunas causas, como los incendios y las perturbaciones naturales, podrían responder a la lluvia; otras, como la agricultura, dependen del uso del suelo. En el caso de los incendios, el Sistema Nacional de Áreas de Conservación (SINAC, 2022) reporta que en 2021 todos los incendios atendidos fueron provocados por acciones humanas y que el 99 % del área afectada estuvo en la vertiente del Pacífico, de modo que el clima influye en su propagación, pero no en su origen.
+
+Este informe analiza, para 2001–2024, la evolución de las emisiones de GEI y de la temperatura promedio nacional, y la relación entre la precipitación y la pérdida de cobertura arbórea, mediante estadística descriptiva y visualización de datos. El análisis es exploratorio: una asociación estadística no se interpreta como causalidad.
+
+Los datos provienen de la base EDGAR (Crippa et al., 2025), que reporta emisiones anuales por sector y sustancia en Mt CO~2~e y no incluye el sector de uso del suelo; de series de temperatura y precipitación [COMPLETAR FUENTES]; y de Global Forest Watch (Hansen et al., 2013; Sims et al., 2025), que reporta hectáreas perdidas por año y causa. Como contraste se usan las estadísticas oficiales de incendios del SINAC (2022), disponibles hasta 2021.
+
+# Objetivo general
+
+Analizar la evolución y la correlación entre las emisiones de gases de efecto invernadero y la temperatura promedio nacional, así como entre las precipitaciones y la pérdida de cobertura arbórea, en Costa Rica durante el periodo 2001-2024, mediante estadística descriptiva y visualización de datos.
+
+# Metodología
+
+[A cargo de Allison]
+
+# Resultados
+
+## Emisiones de GEI
+
+Las emisiones totales pasaron de 11,1 Mt CO~2~e en 2001 a 17,1 Mt CO~2~e en 2024, un aumento de 53,3 % (cerca de 1,9 % anual; Tabla X). El crecimiento no fue parejo: el transporte casi se duplicó (+96,5 %) y su participación subió de 29,0 % a 37,2 %, por lo que supera a la agricultura desde 2003; en 2024 ambos suman el 72 % del total. Por sustancia, el CO~2~ y el CH~4~ concentran más del 86 % de las emisiones, lo que es coherente con un perfil dominado por combustibles fósiles, ganadería y residuos. Por ello, los años atípicos del total se explican sobre todo por estos dos sectores.
+
+Dos años se separan de la tendencia: 2007 (+8,7 % respecto de 2006) y 2020 (−9,5 % respecto de 2019). La caída de 2020 se concentra en el transporte (−16,4 %), lo que coincide con las restricciones de movilidad de ese año, aunque la base de datos no permite aislar esa causa. Tres puntos limitan la lectura: el aumento de la agricultura en 2023 (+21,9 %) se debe principalmente al metano agrícola y conviene verificarlo (podría ser una actualización metodológica de EDGAR); el aumento de 563 % de los gases fluorados parte de una base de solo 0,09 Mt; y las celdas vacías de EDGAR (CO~2~ de explotación de combustibles en 2020 y 2022–2024) afectan menos de 0,01 Mt. 
+
+## Temperatura y relación con las emisiones
+
+La temperatura promedio nacional fue de 25,589 °C, con una desviación estándar de 0,204 °C, un mínimo de 25,225 °C en 2018 y un máximo de 26,1 °C en 2023. La diferencia entre ambos extremos es de 0,875 °C y no hay un crecimiento constante: la serie se comporta como una variación entre años más que como una tendencia clara.
+
+La correlación entre las emisiones totales y la temperatura es prácticamente nula, es decir, los años de mayores emisiones nacionales no fueron sistemáticamente los más cálidos. Esto no contradice la relación física entre GEI y calentamiento, por tres razones. Primero, el calentamiento depende de la acumulación global de gases (IPCC, 2021) y no de las emisiones anuales de un solo país. Segundo, con 24 datos anuales, la variabilidad interanual de la temperatura (posiblemente ligada a fenómenos como ENOS, a verificar) puede ocultar cualquier señal. Tercero, los coeficientes de correlación no captan todas las formas de asociación (Schober et al., 2018). Además, el cálculo usó 20 años, porque se excluyeron 2020 y 2022–2024 por valores faltantes en una categoría de GEI; entre ellos está 2023, el año más cálido, lo que limita la conclusión. 
+
+## Precipitación y pérdida de cobertura arbórea
+
+**Clasificación de los años.** Con la anomalía de precipitación homogenizada, los cuartiles fijan los umbrales en −5,3 % y +6,1 %. Resultan 6 años secos (2006, 2009, 2012, 2013, 2015 y 2019), 12 normales y 6 húmedos (2003, 2007, 2010, 2017, 2021 y 2024; Tabla X). El año más lluvioso fue 2024 (3 741 mm, +24,4 %).
+
+**Composición de la pérdida.** Entre 2001 y 2024 se perdieron 285 522 ha de cobertura arbórea, de las cuales 90,4 % se atribuye a agricultura permanente (258 204 ha). Los incendios (3 536 ha; 1,2 %) y las otras perturbaciones naturales (5 948 ha; 2,1 %) suman solo 3,3 % . La pérdida total bajó de 15 403 ha en 2001 a 8 289 ha en 2024, con picos en 2009 (22 285 ha, año seco), 2017 (22 014 ha, húmedo) y 2008 (21 786 ha, normal). Que los picos ocurran en años de condiciones distintas es coherente con una correlación nula entre la anomalía y la pérdida total (Kendall, 1938; τ = 0,05; p = 0,75): como la agricultura domina, la pérdida total refleja sobre todo decisiones de uso del suelo y no la lluvia.
+
+**Incendios y otras perturbaciones naturales.** Estas causas sí son sensibles al clima, y por eso se analizan por categoría de año.
+
+| Categoría | Años | Incendios: media (ha) | Incendios: mediana (ha) | Perturbaciones: media (ha) | Perturbaciones: mediana (ha) |
+|:----------|-----:|----------------------:|------------------------:|---------------------------:|-----------------------------:|
+| Seco      | 6    | 35,7                  | 6,5                     | 137,7                      | 88,0                         |
+| Normal    | 12   | 68,1                  | 34,0                    | 147,4                      | 116,5                        |
+| Húmedo    | 6    | 417,5                 | 22,5                    | 558,8                      | 176,0                        |
+
+: Pérdida de cobertura arbórea por incendios y otras perturbaciones naturales según la categoría de precipitación del año, Costa Rica, 2001–2024. Fuente: elaboración propia con datos de Global Forest Watch. {#tbl-categorias}
+
+El promedio de incendios en los años húmedos (417,5 ha) es muy superior a su mediana (22,5 ha) porque un solo año, 2017, concentra 2 327 ha, el 66 % de todos los incendios del periodo (y 2 677 ha de perturbaciones naturales, el 45 %). Sin 2017, los promedios de incendios son 35,6 ha en años húmedos, 68,1 en normales y 35,7 en secos, sin patrón. Por eso se reportan las medianas y no los promedios. La correlación de Kendall entre la anomalía y los incendios es τ = 0,18 (p = 0,21), y sin 2017 es τ = 0,13 (p = 0,38): no hay evidencia de la relación esperada, y el signo positivo no se distingue de cero. Tampoco hay rezago: con la anomalía del año anterior, τ = 0,01.
+
+Con otras perturbaciones naturales aparece una relación distinta. Se asocian con el máximo anual de precipitación (τ = 0,40; p ≈ 0,01), y se mantiene sin 2017 (τ = 0,38; p ≈ 0,01). Esto es plausible, porque las lluvias intensas son uno de los principales detonantes de deslizamientos en zonas propensas (Geocad Estudios Ambientales S.A., [AÑO]). Sin embargo, se hicieron 8 comparaciones (2 causas y 4 variables de precipitación) y con una corrección estricta no sería significativa, por lo que se presenta como un indicio exploratorio.
+
+## Discusión
+
+La hipótesis nula con la que fue planteado el estudio inicialmente, establecia que los años más lluviosos tendrían menos incendios y los más secos serían los más afectados por ellos, según información recolectada de distintas fuentes. Sin emabrgo, los resultados obtenidos no la respaldan la hipótesis nula y por defecto comprueban la hipótesis alternativa, eso no significa que el análisis esté mal, tan solo evidencis un resultado interesante, cuyas razones deben de ser indagadas para tener un correcta interpretación.
+
+**1. Un solo año domina el resultado.** El pico de incendios de 2017 cayó en un año húmedo (+7,2 %), aunque no el más lluvioso: 2017 fue el quinto y el más lluvioso fue 2024, con 128 ha de incendios. Ese año también se disparó la pérdida por perturbaciones naturales, lo que sugiere un evento común y no un efecto de la lluvia sobre el fuego. Una explicación posible, que debe verificarse, es el temporal de ese año, que pudo confundirse con incendios en la clasificación por celdas de 1 km (Sims et al., 2025).
+
+**2. La variable de pérdida arbórea mide algo distinto de lo que plantea la hipótesis.** Los registros del SINAC (2022) de área quemada dentro de áreas silvestres protegidas (2011–2021) tienen su máximo en 2016 (6 260 ha) y uno de sus valores más bajos en 2017 (1 171 ha), lo contrario del pico de Global Forest Watch. La correlación entre ambas series es τ = −0,02 (n = 11), es decir, no se parecen. Además, la escala es muy distinta: el SINAC estima un promedio nacional de 30 079 ha quemadas por año entre 1998 y 2021, frente a 147 ha por año de incendios en Global Forest Watch, porque el fuego afecta 16 tipos de vegetación y los bosques son los menos afectados (SINAC, 2022). Global Forest Watch solo captura la fracción que implica pérdida de dosel.
+
+**3. Con los datos oficiales aparece el sentido esperado.** Entre la anomalía de precipitación y el área quemada del SINAC la correlación es negativa (τ = −0,42; p = 0,09; n = 11): más área quemada en años más secos. No es significativa al 5 %, pero con 11 años es poco lo que se puede detectar. El propio SINAC atribuye el mínimo de 2021 a lluvias atípicas a finales de marzo y durante abril, los meses más críticos (SINAC, 2022): el efecto es estacional y un total anual no lo recoge.
+
+**4. Los incendios tienen origen humano.** En 2021, el 100 % de los incendios atendidos fueron provocados por acciones humanas (34 % por vandalismo, venganza o caza, y 31 % por quemas agropecuarias y de pastos), y el 99 % del área afectada estuvo en la vertiente del Pacífico (SINAC, 2022). La lluvia puede modular la propagación, pero no explica el inicio, y un promedio nacional mezcla regiones con regímenes muy distintos.
+
+En conjunto, el resultado indica que con precipitación anual nacional y con la pérdida arbórea de Global Forest Watch no se detecta la relación esperada, y no que la hipótesis sea falsa. Poner a prueba la hipótesis requeriría precipitación mensual de la época seca, datos por región y el área quemada del SINAC.
+
+## Limitaciones
+
+Las series tienen 24 observaciones anuales y la inferencia es limitada; un solo año puede cambiar un resultado. La pérdida arbórea por causa proviene de una clasificación de la causa dominante por celdas de 1 km, no de una observación anual de cada evento. La validación con el SINAC cubre solo 2011–2021 y las áreas silvestres protegidas. Las series de GEI y de temperatura comparten tendencias que pueden afectar la correlación. Por último, todas las asociaciones son exploratorias y no permiten inferir causalidad.
+
+## Conclusiones
+
+1. Las emisiones de GEI aumentaron 53 % entre 2001 y 2024; el transporte y la agricultura explican el 72 % del total, y 2007 y 2020 son los años atípicos.
+2. No se encontró asociación entre las emisiones totales y la temperatura promedio nacional (Pearson = −0,0946; Kendall = 0,0106), lo cual es esperable por la diferencia de escala entre emisiones nacionales y calentamiento global; el resultado debe confirmarse con los 24 años.
+3. La pérdida de cobertura arbórea es explicada en 90 % por la agricultura permanente y no se relaciona con la precipitación anual (τ = 0,05); los incendios y las perturbaciones naturales suman solo 3,3 %.
+4. La hipótesis de que los años secos tienen más incendios no se cumplió con Global Forest Watch, debido sobre todo al efecto de 2017 y a que esta fuente mide una fracción mínima del fuego. Con los datos del SINAC aparece el sentido esperado (τ = −0,42), aunque sin significancia estadística.
+5. Se recomienda, para futuros trabajos, usar precipitación mensual y regional, el área quemada oficial del SINAC y el análisis de eventos extremos como 2017.
+
+# Bibliografía
+
+Crippa, M., Guizzardi, D., Pagani, F., Banja, M., Muntean, M., Schaaf, E., Quadrelli, R., Risquez Martin, A., Taghavi-Moharamli, P., Köykkä, J., Grassi, G., Rossi, S., Melo, J., Oom, D., Branco, A., Suárez-Moreno, M., Sedano, F., San-Miguel, J., Manca, G., . . . Pekar, F. (2025). *GHG emissions of all world countries: 2025 report* (EUR 40443). Publications Office of the European Union. https://doi.org/10.2760/9816914
+
+Geocad Estudios Ambientales S.A. ([AÑO]). *Desarrollo de escenarios por inestabilidad a laderas para la implementación de restricciones en el uso de la tierra en las áreas de influencia de los deslizamientos de Tapezco y Chitaría, Santa Ana, San José* [Informe final]. [AGREGAR ENTIDAD CONTRATANTE]
+
+Gobierno de Costa Rica. (2019). *Plan Nacional de Descarbonización 2018–2050*. [AGREGAR URL]
+
+Hansen, M. C., Potapov, P. V., Moore, R., Hancher, M., Turubanova, S. A., Tyukavina, A., Thau, D., Stehman, S. V., Goetz, S. J., Loveland, T. R., Kommareddy, A., Egorov, A., Chini, L., Justice, C. O., & Townshend, J. R. G. (2013). High-resolution global maps of 21st-century forest cover change. *Science, 342*(6160), 850–853. https://doi.org/10.1126/science.1244693
+
+Intergovernmental Panel on Climate Change. (2021). *Climate change 2021: The physical science basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change*. Cambridge University Press. https://doi.org/10.1017/9781009157896
+
+Kendall, M. G. (1938). A new measure of rank correlation. *Biometrika, 30*(1–2), 81–93. https://doi.org/10.1093/biomet/30.1-2.81
+
+Programa de las Naciones Unidas para el Desarrollo. (2022, 19 de enero). *Transporte genera el 42 % de las emisiones de gases de efecto invernadero en Costa Rica*. https://www.undp.org/es/costa-rica/comunicados-de-prensa/transporte-genera-el-42-de-las-emisiones-de-gases-de-efecto-invernadero-en-costa-rica
+
+Schober, P., Boer, C., & Schwarte, L. A. (2018). Correlation coefficients: Appropriate use and interpretation. *Anesthesia & Analgesia, 126*(5), 1763–1768. https://doi.org/10.1213/ANE.0000000000002864
+
+Sims, M., Stanimirova, R., [COMPLETAR AUTORES DESDE EL DOI]. (2025). Global drivers of forest loss at 1 km resolution. *Environmental Research Letters, 20*(7), 074027. https://doi.org/10.1088/1748-9326/add606
+
+Sistema Nacional de Áreas de Conservación. (2022). *Informe anual estadísticas SEMEC 2021: SINAC en números* (B. Pavlotzky, Comp.). Ministerio de Ambiente y Energía. http://www.sinac.go.cr/
+
+
