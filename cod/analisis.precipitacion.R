@@ -12,6 +12,10 @@ datos.precipitacion <- read_excel("data/Precipitación.xlsx") %>%
     prec.anual.min = prec_anual_min
   )
 
+#re-escalar anomalías, para que tengan una sola escala
+  filter(anio >= 2001) %>%
+  mutate(anomalia.pct = (prec.total / prec.esperada - 1) * 100)
+
 q1.anomalia <- quantile(datos.precipitacion$anomalia.pct, probs = 0.25)
 q3.anomalia <- quantile(datos.precipitacion$anomalia.pct, probs = 0.75)
 
