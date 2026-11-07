@@ -11,6 +11,3 @@ data/confidencial/
 config/credenciales.yml
 .Renviron
 
-# Resultados pesados (se regeneran corriendo cod/)
-res/*.html
-res/*.pdf
