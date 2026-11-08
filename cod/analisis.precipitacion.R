@@ -1,7 +1,7 @@
 library(readxl)
 library(tidyverse)
 
-datos.precipitacion <- read_excel("data/Precipitación.xlsx") %>% 
+datos.precipitacion <- read_excel("../data/precipitacion.xlsx") %>% 
   rename(
     anio = date,
     prec.total = `prec_total(mm)`,
@@ -37,4 +37,5 @@ resumen.categorias <- datos.precipitacion %>%
     pico.max = max(prec.anual.max),
     piso.min = min(prec.anual.min)
   )
+
 
