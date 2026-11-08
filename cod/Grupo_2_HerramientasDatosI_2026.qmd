@@ -451,3 +451,17 @@ tabla_resumen_gei %>%
 ```
 
 Como se detalla en la @tbl-resumen-gei, el CO~2~ tuvo el mayor promedio anual, seguido del metano; el óxido nitroso y los gases fluorados fueron considerablemente menores.
+
+source(analisis_perdida_arboles.R)
+source(analisis.precipitacion.R)
+source(comparacion_precipitacion_arboles.R)
+source(funciones_gei_temperatura.R)
+
+print(grafico.precipitacion)
+print(precipitacion.clasificacion)
+print(grafico.lineas)
+print(grafico.incendios)
+print(grafico.perturbaciones)
+print(grafico.gei)
+print(grafico.temperatura)
+print(grafica.comp)
