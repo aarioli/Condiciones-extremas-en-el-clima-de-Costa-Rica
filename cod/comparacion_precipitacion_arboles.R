@@ -76,3 +76,19 @@ grafico.perturbaciones <- resumen.perdidas %>%
   theme(legend.position = "none")
 
 grafico.perturbaciones
+
+ggsave(
+  "res/comparacion_clasificación_incendios.png",
+  plot = grafico.incendios,
+  width = 10,
+  height = 6,
+  dpi = 300
+)
+
+ggsave(
+  "res/comparacion_clasificación_perturbaciones_naturales.png",
+  plot = grafico.perturbaciones,
+  width = 10,
+  height = 6,
+  dpi = 300
+)
