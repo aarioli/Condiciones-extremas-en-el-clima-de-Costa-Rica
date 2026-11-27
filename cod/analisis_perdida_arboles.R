@@ -1,6 +1,6 @@
 library(tidyverse)
 library(readxl)
-CRI <- read_excel("data/raw/CRI.xlsx")
+CRI <- read_excel("../data/raw/CRI.xlsx")
 
 CRI <- CRI %>% 
   filter(
@@ -27,7 +27,7 @@ grafico.lineas <- ggplot(
 grafico.lineas
 
 ggsave(
-  "res/perdida_cobertura_naturales.png",
+  "../res/graficos/perdida_cobertura_naturales.png",
   plot = grafico.lineas,
   width = 10,
   height = 6,

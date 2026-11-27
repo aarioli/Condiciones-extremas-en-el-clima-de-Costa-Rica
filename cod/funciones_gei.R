@@ -48,7 +48,7 @@ correlacion_gei_temp <- function(datos){
 }
 
 importar_gei <- function(ruta) {
-  readxl::read_excel(ruta, skip = 1)
+  readxl::read_excel(ruta)
 }
 
 importar_temperatura <- function(ruta) {

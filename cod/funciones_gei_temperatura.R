@@ -109,8 +109,8 @@ correlacion_kendall <- function(datos) {
 }
 
 library(readxl)
-temperatura.cr <- read_excel("data/temperatura_Costa_Rica_tidy_2001_2024.xlsx")
-gei <- read_excel("data/efecto_invernadero.xlsx")
+temperatura.cr <- read_excel("../data/raw/temperatura_Costa_Rica_tidy_2001_2024.xlsx")
+gei <- importar_gei("../data/raw/efecto_invernadero.xlsx")
 
 gei_cr <- limpiar_gei(gei)
 
@@ -163,7 +163,7 @@ grafico.gei <- ggplot(gei_anual, aes(x = anio, y = emisiones_totales)) +
 grafico.gei
 
 ggsave(
-  "res/grafico_gei.png",
+  "../res/graficos/grafico_gei.png",
   plot = grafico.gei,
   width = 10,
   height = 6,
@@ -219,7 +219,7 @@ grafico.temperatura <- ggplot(tabla_temperatura, aes(x = anio, y = promedio_temp
 grafico.temperatura
 
 ggsave(
-  "res/grafico_temperatura.png",
+  "../res/graficos/grafico_temperatura.png",
   plot = grafico.temperatura,
   width = 10,
   height = 6,
@@ -242,7 +242,7 @@ grafica.comp <-  ggplot(
 grafica.comp
 
 ggsave(
-  "res/comparacion_temperatura_emisiones.png",
+  "../res/graficos/comparacion_temperatura_emisiones.png",
   plot = grafica.comp,
   width = 10,
   height = 6,
