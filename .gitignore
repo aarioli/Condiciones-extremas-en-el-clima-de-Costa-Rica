@@ -11,3 +11,4 @@ data/confidencial/
 config/credenciales.yml
 .Renviron
 
+.quarto/

@@ -1,6 +1,6 @@
 library(tidyverse)
 library(readxl)
-CRI <- read_excel("../data/CRI.xlsx")
+CRI <- read_excel("data/raw/CRI.xlsx")
 
 CRI <- CRI %>% 
   filter(

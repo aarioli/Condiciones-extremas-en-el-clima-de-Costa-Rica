@@ -37,8 +37,8 @@ colores <- c(Seco = "#C0504D", Normal = "grey70", Humedo = "#287D8E")
 etiq.cat <- c(Seco = "Seco", Normal = "Normal", Humedo = "Húmedo")
 
 # ---- GEI y temperatura (funciones del grupo) ----
-gei <- importar_gei("../data/efecto_invernadero.xlsx")
-temperatura.cr <- importar_temperatura("../data/temperatura_Costa_Rica_tidy_2001_2024.xlsx")
+gei <- importar_gei("../data/raw/efecto_invernadero.xlsx")
+temperatura.cr <- importar_temperatura("../data/raw/temperatura_Costa_Rica_tidy_2001_2024.xlsx")
 gei_cr <- limpiar_gei(gei)
 gei_anual <- emisiones_por_anio(gei_cr)
 tabla_temperatura <- tabla_por_anio(temperatura.cr)
@@ -50,7 +50,7 @@ tabla_resumen_temp <- resumen_temp(tabla_temperatura)
 
 # ---- Composición de GEI con celdas vacías = 0 (24 años) ----
 anios <- as.character(2001:2024)
-edgar.cr <- read_excel("../data/efecto_invernadero.xlsx",
+edgar.cr <- read_excel("../data/raw/efecto_invernadero.xlsx",
                        sheet = "EDGAR_2025_GHG_booklet_2025", skip = 1) %>%
   filter(`EDGAR Country Code` == "CRI") %>%
   select(Substance, Sector, all_of(anios)) %>%
@@ -65,7 +65,7 @@ pearson24 <- cor(datos24$emisiones_total, datos24$promedio_temp)
 kendall24 <- cor(datos24$emisiones_total, datos24$promedio_temp, method = "kendall")
 
 # ---- Precipitación ----
-prec <- read_excel("../data/precipitacion.xlsx") %>%
+prec <- read_excel("../data/processed/precipitacion.datos.limpios.xlsx") %>%
   rename(
     anio = date, prec.total = `prec_total(mm)`, prec.esperada = prec_esperada,
     anomalia.pct = anomalia_porcentual, prec.anual.max = prec_anual_max,
@@ -97,7 +97,7 @@ resumen.categorias <- prec %>%
   )
 
 # ---- Pérdida de cobertura arbórea ----
-cri <- read_excel("../data/CRI.xlsx") %>% filter(year >= 2001, year <= 2024)
+cri <- read_excel("../data/raw/CRI.xlsx") %>% filter(year >= 2001, year <= 2024)
 
 causas.es <- c(
   "Permanent agriculture" = "Agricultura permanente",

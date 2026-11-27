@@ -1,7 +1,7 @@
 library(readxl)
 library(tidyverse)
 
-datos.precipitacion <- read_excel("../data/precipitacion.xlsx") %>% 
+datos.precipitacion <- read_excel("../data/processed/precipitacion.datos.limpios.xlsx") %>%
   rename(
     anio = date,
     prec.total = `prec_total(mm)`,
