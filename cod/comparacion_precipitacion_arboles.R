@@ -1,8 +1,8 @@
 library(tidyverse)
 library(ggplot2)
 
-source("cod/analisis.precipitacion.R")
-source("cod/analisis_perdida_arboles.R")
+source("analisis.precipitacion.R")
+source("analisis_perdida_arboles.R")
 
 comparacion <- datos.precipitacion %>%
   select(anio, categoria.anio, anomalia.pct) %>%
@@ -78,7 +78,7 @@ grafico.perturbaciones <- resumen.perdidas %>%
 grafico.perturbaciones
 
 ggsave(
-  "res/comparacion_clasificación_incendios.png",
+  "../res/graficos/comparacion_clasificación_incendios.png",
   plot = grafico.incendios,
   width = 10,
   height = 6,
@@ -86,7 +86,7 @@ ggsave(
 )
 
 ggsave(
-  "res/comparacion_clasificación_perturbaciones_naturales.png",
+  "../res/graficos/comparacion_clasificación_perturbaciones_naturales.png",
   plot = grafico.perturbaciones,
   width = 10,
   height = 6,
