@@ -18,6 +18,19 @@ format:
       x: 2.5cm
       y: 2.3cm
     root: ".."
+    include-before-body:
+      - text: |
+          #set par(first-line-indent: (amount: 1.25cm, all: true), justify: true)
+          #show align.where(alignment: center): set text(size: 10pt)
+          #show align.where(alignment: center): set block(spacing: 0.5em)
+          #show heading.where(level: 1): set text(size: 12pt)
+          #show heading.where(level: 1): set block(above: 1.1em, below: 0.7em)
+          #show heading.where(level: 2): set text(size: 12pt)
+          #show heading.where(level: 2): set block(above: 0.9em, below: 0.5em)
+          #show figure.caption: set text(size: 9.5pt)
+          #show table: set text(size: 10pt)
+          #show table.cell: set par(justify: false)
+          #set table(fill: (_, y) => if calc.odd(y) { luma(245) })
 execute:
   echo: false
   warning: false
@@ -37,8 +50,10 @@ colores <- c(Seco = "#C0504D", Normal = "grey70", Humedo = "#287D8E")
 etiq.cat <- c(Seco = "Seco", Normal = "Normal", Humedo = "Húmedo")
 
 # ---- GEI y temperatura (funciones del grupo) ----
+
 gei <- importar_gei("../data/raw/efecto_invernadero.xlsx")
 temperatura.cr <- importar_temperatura("../data/raw/temperatura_Costa_Rica_tidy_2001_2024.xlsx")
+
 gei_cr <- limpiar_gei(gei)
 gei_anual <- emisiones_por_anio(gei_cr)
 tabla_temperatura <- tabla_por_anio(temperatura.cr)
@@ -51,7 +66,7 @@ tabla_resumen_temp <- resumen_temp(tabla_temperatura)
 # ---- Composición de GEI con celdas vacías = 0 (24 años) ----
 anios <- as.character(2001:2024)
 edgar.cr <- read_excel("../data/raw/efecto_invernadero.xlsx",
-                       sheet = "EDGAR_2025_GHG_booklet_2025", skip = 1) %>%
+                       sheet = "EDGAR_2025_GHG_booklet_2025") %>%
   filter(`EDGAR Country Code` == "CRI") %>%
   select(Substance, Sector, all_of(anios)) %>%
   mutate(across(all_of(anios), ~ replace_na(.x, 0)))
@@ -65,6 +80,7 @@ pearson24 <- cor(datos24$emisiones_total, datos24$promedio_temp)
 kendall24 <- cor(datos24$emisiones_total, datos24$promedio_temp, method = "kendall")
 
 # ---- Precipitación ----
+
 prec <- read_excel("../data/processed/precipitacion.datos.limpios.xlsx") %>%
   rename(
     anio = date, prec.total = `prec_total(mm)`, prec.esperada = prec_esperada,
@@ -97,6 +113,7 @@ resumen.categorias <- prec %>%
   )
 
 # ---- Pérdida de cobertura arbórea ----
+
 cri <- read_excel("../data/raw/CRI.xlsx") %>% filter(year >= 2001, year <= 2024)
 
 causas.es <- c(
@@ -135,6 +152,7 @@ sinac <- tibble(
 validacion <- datos.clima %>%
   select(anio, anomalia.pct, categoria.anio, incendios) %>%
   inner_join(sinac, by = "anio")
+
 ```
 
 # Introducción
@@ -217,7 +235,9 @@ Las emisiones totales pasaron de 11,1 Mt CO~2~e en 2001 a 17,1 Mt CO~2~e en 2024
 ```{r}
 #| label: fig-gei
 #| fig-cap: "Evolución de las emisiones anuales de GEI por gas en Costa Rica, 2001–2024. Fuente: elaboración propia con datos de EDGAR (Crippa et al., 2025)."
-#| fig-height: 2.7
+#| fig-width: 6.5
+#| fig-height: 2.5
+#| out-width: "82%"
 
 ggplot(gei_anual, aes(x = anio, y = emisiones_totales)) +
   geom_line(color = "#287D8E", linewidth = 0.9) +
@@ -240,8 +260,14 @@ Dos años se separan de la tendencia: 2007 (+8,7 % respecto de 2006) y 2020 (−
 ```{r}
 #| label: tbl-temp
 #| tbl-cap: "Resumen de la temperatura promedio anual en Costa Rica, 2001–2024 (°C). Fuente: elaboración propia con datos de temperatura de Unidad de Investigación Climática (CRU TS v4.09), Universidad de East Anglia (Harris et al., 2020; University of East Anglia Climatic Research Unit, 2025)."
+#| tbl-colwidths: [25, 25, 25, 25]
 
-knitr::kable(tabla_resumen_temp, digits = 3)
+knitr::kable(
+  tabla_resumen_temp,
+  digits = 3,
+  col.names = c("Promedio (°C)", "Desviación estándar (°C)", "Mínimo (°C)", "Máximo (°C)"),
+  align = "cccc"
+)
 ```
 
 La temperatura promedio nacional fue de 25,589 °C, con una desviación estándar de 0,204 °C, un mínimo de 25,225 °C en 2018 y un máximo de 26,1 °C en 2023 (@tbl-temp y @fig-temp). La diferencia entre los extremos es de 0,875 °C y no hay un crecimiento constante: la serie fluctúa entre años, y destaca el aumento entre 2022 y 2023.
@@ -249,7 +275,9 @@ La temperatura promedio nacional fue de 25,589 °C, con una desviación estánda
 ```{r}
 #| label: fig-temp
 #| fig-cap: "Evolución de la temperatura promedio anual en Costa Rica, 2001–2024. La línea punteada es el promedio del periodo; los puntos azul y rojo oscuro marcan el mínimo y el máximo. Fuente: elaboración propia con datos de temperaturade Unidad de Investigación Climática (CRU TS v4.09), Universidad de East Anglia (Harris et al., 2020; University of East Anglia Climatic Research Unit, 2025)."
+#| fig-width: 6.5
 #| fig-height: 2.3
+#| out-width: "82%"
 
 prom_temp <- mean(tabla_temperatura$promedio_temp)
 temp_min <- tabla_temperatura %>% filter(promedio_temp == min(promedio_temp))
@@ -273,7 +301,9 @@ En la @fig-disp, los años más recientes (colores más claros) tienen emisiones
 ```{r}
 #| label: fig-disp
 #| fig-cap: "Relación entre las emisiones totales de GEI y la temperatura promedio anual en Costa Rica, 20 años con información completa. Fuente: elaboración propia con datos de EDGAR (Crippa et al., 2025) y de temperatura de Unidad de Investigación Climática (CRU TS v4.09), Universidad de East Anglia (Harris et al., 2020; University of East Anglia Climatic Research Unit, 2025)."
+#| fig-width: 6.5
 #| fig-height: 2.5
+#| out-width: "82%"
 
 ggplot(datos_total_validos, aes(x = emisiones_total, y = promedio_temp)) +
   geom_point(aes(color = anio), size = 3) +
@@ -291,7 +321,9 @@ Con los umbrales Q1 = `r format(round(q1.anomalia, 1), decimal.mark = ",")` % y 
 ```{r}
 #| label: fig-prec
 #| fig-cap: "Anomalía porcentual de la precipitación anual y categoría de cada año, Costa Rica, 2001–2024. Las líneas punteadas son Q1 y Q3. Fuente: elaboración propia con datos de precipitación de Indicadores de precipitación a nivel subnacional del Programa Mundial de Alimentos (PMA)."
-#| fig-height: 2.4
+#| fig-width: 6.5
+#| fig-height: 2.5
+#| out-width: "82%"
 
 ggplot(prec, aes(x = anio, y = anomalia.pct, fill = categoria.anio)) +
   geom_col() +
@@ -335,7 +367,9 @@ Entre 2001 y 2024 se perdieron 285 522 ha de cobertura arbórea, y 90,4 % se atr
 ```{r}
 #| label: fig-fuego
 #| fig-cap: "Pérdida de cobertura arbórea por incendios y otras perturbaciones naturales, según la categoría de precipitación del año, Costa Rica, 2001–2024. Fuente: elaboración propia con datos de Global Forest Watch (Sims et al., 2025) y de precipitación de Indicadores de precipitación a nivel subnacional del Programa Mundial de Alimentos (PMA)."
-#| fig-height: 2.6
+#| fig-width: 6.5
+#| fig-height: 2.5
+#| out-width: "82%"
 
 datos.clima %>%
   select(anio, categoria.anio, Incendios = incendios, `Otras perturbaciones naturales` = naturales) %>%
@@ -379,7 +413,9 @@ La hipótesis planteaba más incendios en los años secos y menos en los húmedo
 ```{r}
 #| label: fig-sinac
 #| fig-cap: "Área afectada por incendios en áreas silvestres protegidas y anomalía de precipitación, Costa Rica, 2011–2021. Fuente: elaboración propia con datos del SINAC (2022) y de precipitación de Indicadores de precipitación a nivel subnacional del Programa Mundial de Alimentos (PMA)."
+#| fig-width: 6.5
 #| fig-height: 2.5
+#| out-width: "82%"
 
 ggplot(validacion, aes(x = anomalia.pct, y = area.asp, label = anio)) +
   geom_vline(xintercept = 0, linetype = "dashed", color = "gray50") +
@@ -405,6 +441,8 @@ Las series tienen 24 observaciones anuales y un solo año puede cambiar un resul
 3.  La pérdida de cobertura arbórea es explicada en 90 % por la agricultura permanente y no se relaciona con la precipitación anual (τ = 0,05); los incendios y las perturbaciones naturales suman solo 3,3 %.
 4.  La hipótesis de más incendios en años secos no se cumplió con Global Forest Watch, debido sobre todo a 2017 y a que esta fuente mide una fracción mínima del fuego. Con los datos del SINAC aparece el sentido esperado (τ = −0,42), aunque sin significancia estadística.
 5.  Se recomienda usar precipitación mensual y regional, el área quemada oficial del SINAC y un análisis específico de eventos extremos como el de 2017.
+
+{{< pagebreak >}}
 
 # Bibliografía {.unnumbered}
 
@@ -434,9 +472,15 @@ Sistema Nacional de Áreas de Conservación. (2022). *Informe anual estadística
 
 Unidad de Investigación Climática \[CRU\] de la Universidad de East Anglia y Harris, I. C. (2025). *Conjunto de datos climáticos de alta resolución CRU TS v4.09* (1901–2024): Variable TMP (temperatura media diaria) \[Conjunto de datos\]. University of East Anglia Climatic Research Unit. https://crudata.uea.ac.uk/cru/data/hrg/cru_ts_4.09/cruts.2503051245.v4.09/tmp/
 
+{{< pagebreak >}}
+
 # Anexos {.unnumbered}
 
 Repositorio del proyecto: https://github.com/aarioli/Condiciones-extremas-en-el-clima-de-Costa-Rica
+
+## Anexo A. Resumen estadístico de emisiones por gas (2001–2024) {.unnumbered}
+
+Como se detalla en la @tbl-resumen-gei, el CO~2~ tuvo el mayor promedio anual entre 2001 y 2024, seguido del metano; el óxido nitroso y los gases fluorados fueron considerablemente menores.
 
 ```{r}
 #| label: tbl-resumen-gei
@@ -451,4 +495,55 @@ tabla_resumen_gei %>%
   knitr::kable(digits = 3)
 ```
 
-Como se detalla en la @tbl-resumen-gei, el CO~2~ tuvo el mayor promedio anual, seguido del metano; el óxido nitroso y los gases fluorados fueron considerablemente menores.
+## Anexo B. Visualizaciones exploratorias complementarias {.unnumbered}
+
+De manera complementaria a las figuras del cuerpo principal, las figuras @fig-anexo-lineas a @fig-anexo-pert presentan los gráficos exploratorios de pérdida de cobertura arbórea y su relación con las categorías de precipitación.
+
+```{r}
+#| label: fig-anexo-lineas
+#| fig-cap: "Tendencia anual de la pérdida de cobertura arbórea por incendios y otras perturbaciones naturales en Costa Rica (2001–2024). Fuente: elaboración propia con datos de Global Forest Watch."
+
+cri %>%
+  filter(driver %in% c("Other natural disturbances", "Wildfire")) %>%
+  mutate(driver = recode(driver, !!!causas.es)) %>%
+  ggplot(aes(x = year, y = tc_loss_ha, color = driver)) +
+  geom_line(linewidth = 1) +
+  geom_point(size = 2) +
+  scale_x_continuous(breaks = seq(2001, 2024, 2)) +
+  labs(x = "Año", y = "Hectáreas perdidas", color = "Causa") +
+  theme_minimal()
+```
+
+```{r}
+#| label: fig-anexo-inc
+#| fig-cap: "Mediana de pérdida arbórea por incendios según categoría anual de precipitación (2001–2024). Fuente: elaboración propia con datos de Global Forest Watch y el PMA."
+
+datos.clima %>%
+  group_by(categoria.anio) %>%
+  summarise(mediana = median(incendios, na.rm = TRUE), .groups = "drop") %>%
+  ggplot(aes(x = categoria.anio, y = mediana, fill = categoria.anio)) +
+  geom_col(width = 0.6) +
+  geom_text(aes(label = round(mediana, 1)), vjust = -0.5) +
+  scale_fill_manual(values = colores, labels = etiq.cat) +
+  scale_x_discrete(labels = etiq.cat) +
+  labs(x = "Clasificación anual", y = "Mediana de hectáreas perdidas") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+```{r}
+#| label: fig-anexo-pert
+#| fig-cap: "Mediana de pérdida arbórea por otras perturbaciones naturales según categoría anual de precipitación (2001–2024). Fuente: elaboración propia con datos de Global Forest Watch y el PMA."
+
+datos.clima %>%
+  group_by(categoria.anio) %>%
+  summarise(mediana = median(naturales, na.rm = TRUE), .groups = "drop") %>%
+  ggplot(aes(x = categoria.anio, y = mediana, fill = categoria.anio)) +
+  geom_col(width = 0.6) +
+  geom_text(aes(label = round(mediana, 1)), vjust = -0.5) +
+  scale_fill_manual(values = colores, labels = etiq.cat) +
+  scale_x_discrete(labels = etiq.cat) +
+  labs(x = "Clasificación anual", y = "Mediana de hectáreas perdidas") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
